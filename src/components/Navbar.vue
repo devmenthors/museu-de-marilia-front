@@ -3,11 +3,11 @@
         <div class="container">
             <RouterLink class="navbar-brand d-flex align-items-center fw-bold" to="/">
                 <p class="m-0">[LOGO]</p>
-                <p class="mb-0 mx-4 fs-5">Painel do Curador > Solitcitação #000012</p>
+                <p class="mb-0 mx-4 fs-5">Painel do Curador > Solicitação #000012</p>
             </RouterLink>
 
             <div class="navbar-nav ms-auto gap-3">
-                <RouterLink to="/" class="nav-link">
+                <RouterLink to="/" class="nav-link px-0">
                     Curador: Dev. João Pedro
                     <i class="ri-notification-line me-1 p-1"></i>
                 </RouterLink>
