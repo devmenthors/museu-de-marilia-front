@@ -1,35 +1,36 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "./base.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+:root {
+  --bs-font-family-sans-serif: 'Inter', sans-serif;
+  --bs-body-font-family: 'Inter', sans-serif;
+
+  --bs-primary: #B53C02;       
+  --bs-secondary: #5D372E;    
+  --bs-body-bg: #FFFFE3;      
+  --bs-body-color: #000000;    
+
+  --bs-primary-rgb: 181, 60, 2;
+  --bs-secondary-rgb: 93, 55, 46;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #9c3302;
+  --bs-btn-hover-border-color: #9c3302;
+  --bs-btn-active-bg: #9c3302;
+  --bs-btn-active-border-color: #9c3302;
+  color: #fff;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.btn-secondary {
+  --bs-btn-bg: var(--bs-body-bg);
+  --bs-btn-border-color: var(--bs-body-bg);
+  --bs-body-bg: #ececdb;      
+  --bs-btn-hover-bg: #ececdb; 
+  --bs-btn-hover-border-color: #ececdb;
+  --bs-btn-active-bg: #ececdb;
+  --bs-btn-active-border-color: #ececdb;
+  color: var(--bs-body-color);
 }
