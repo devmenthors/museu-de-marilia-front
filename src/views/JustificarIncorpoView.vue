@@ -3,27 +3,23 @@
     <div class="row">
       <div class="col-12 conteudo">
 
-        <h2 class="titulo-laranja">Aprovar Incorporação</h2>
-        <h3 class="subtitulo-cinza">Preencha os dados necessários para o registro oficial do item no acervo permanente
-        </h3>
+        <h2 class="titulo-laranja">Justificativa de Não Incorporação</h2>
+        <h3 class="subtitulo-cinza">Forneça o parecer oficial justificando o motivo para o item não ser incorporado ao acervo do museu</h3>
 
         <div class="caixa-resumo-marrom">
           <p class="tag-resumo">RESUMO DA PROPOSTA</p>
           <h4 class="titulo-resumo">Protocolo: #000012 | Doador: Maria Oliveira</h4>
           <p class="texto-resumo">Item: Provável fragmento de carapaça de dinossauro saurópode (Formação Marília).</p>
         </div>
-        <FormsAprovarView></FormsAprovarView>
 
+        <FormsJustificarView></FormsJustificarView>
       </div>
-
     </div>
-
   </main>
-
 </template>
 
 <script setup>
-import FormsAprovarView from '@/components/formulários/FormsAprovarView.vue';
+import FormsJustificarView from '@/components/formulários/FormsJustificarView.vue';
 
 </script>
 
@@ -90,4 +86,7 @@ import FormsAprovarView from '@/components/formulários/FormsAprovarView.vue';
   font-size: 14px;
   color: #5D372E;
 }
+
+
+
 </style>

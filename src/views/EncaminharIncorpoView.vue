@@ -1,29 +1,31 @@
 <template>
+
   <main class="conteudo-container container-fluid">
     <div class="row">
       <div class="col-12 conteudo">
 
-        <h2 class="titulo-laranja">Aprovar Incorporação</h2>
-        <h3 class="subtitulo-cinza">Preencha os dados necessários para o registro oficial do item no acervo permanente
-        </h3>
+
+        <h2 class="titulo-laranja">Encaminhar Solicitação</h2>
+        <h3 class="subtitulo-cinza">Encaminhe esta solicitação para outro departamento ou especialista para análise
+          adicional</h3>
 
         <div class="caixa-resumo-marrom">
           <p class="tag-resumo">RESUMO DA PROPOSTA</p>
           <h4 class="titulo-resumo">Protocolo: #000012 | Doador: Maria Oliveira</h4>
           <p class="texto-resumo">Item: Provável fragmento de carapaça de dinossauro saurópode (Formação Marília).</p>
         </div>
-        <FormsAprovarView></FormsAprovarView>
 
+        <FormsEncaminhar></FormsEncaminhar>
       </div>
-
     </div>
 
   </main>
-
+  
 </template>
 
 <script setup>
-import FormsAprovarView from '@/components/formulários/FormsAprovarView.vue';
+import FormsEncaminhar from '@/components/formulários/FormsEncaminhar.vue';
+import AppHeader from './AppHeader.vue';
 
 </script>
 
