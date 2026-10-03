@@ -1,3 +1,9 @@
+<script setup>
+import { RouterLink } from "vue-router";
+import { donationsList } from "../composables/donationList";
+</script>
+
+
 <template>
     <div>
         <div class="text-center py-4">
@@ -8,31 +14,21 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Status</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Incorporado</th>
-                        <td><a href="thRef">Ver Detalhes</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Em Análise</th>
-                        <td><a href="">Ver Detalhes</a></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Analisado</th>
-                        <td><a href="">Ver Detalhes</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Não Incoporado</th>
-                        <td><a href="tdRef">Ver Detalhes</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Encaminhado</th>
-                        <td><a href="">Ver Detalhes</a></td>
+                    <tr v-for="donation in donationsList" :key="donation.id">
+                        <th scope="row">{{ donation.id }}</th>
+                        <th scope="row">{{ donation.status }}</th>
+                        <td>
+                            <RouterLink 
+                                :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
+                                class="action-link"
+                            >Ver Detalhes</RouterLink>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -44,7 +40,7 @@
 .container-sm {
     max-width: 750px;
 }
-a {
+.action-link {
     color: var(--bs-secondary);
     text-decoration: underline;
     cursor: pointer;

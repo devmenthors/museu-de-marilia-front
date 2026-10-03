@@ -2,22 +2,22 @@ import {ref, computed} from "vue";
 
 const mockApiData = {
     "analysis": {
-        title: 'Análise da Doação #000012',
+        title: 'Análise da Doação',
         heading: 'Análise',
         buttons: ['Cancelar Análise', 'Encaminhar', 'Não Incorporar', 'Incorporar']
     },
     "incorporation": {
-        title: 'Detalhes da Incorporação #000012',
+        title: 'Detalhes da Incorporação',
         heading: 'Detalhes da Incorporação',
         buttons: ['Cancelar', 'Incorporar']
     },
     "rejected": {
-        title: 'Detalhes da Não Incorporação #000012',
+        title: 'Detalhes da Não Incorporação',
         heading: 'Detalhes da Não Incorporação',
         buttons: ['Cancelar', 'Incorporar', 'Encaminhar']
     },
     "forwarded": {
-        title: 'Detalhes do Encaminhamento #000012',
+        title: 'Detalhes do Encaminhamento',
         heading: 'Detalhes do Encaminhamento',
         buttons: ['Cancelar', 'Confirmar Encaminhamento']
     }

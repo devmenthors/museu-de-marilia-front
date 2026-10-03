@@ -45,14 +45,15 @@ const handleAction = async (actionName) => {
     }
 
     if (statusMap[actionName]) {
-        await fetchAnalysisData("000012", statusMap[actionName])
+        const newStatus = statusMap[actionName]
+        await fetchAnalysisData(route.params.id, newStatus)
     }
 }
 </script>
 
 <template>
     <div v-if="!loading">
-        <h1>{{ getScreenData.title }}</h1>
+        <h1>{{ getScreenData.title }} #{{ route.params.id }}</h1>
         <p>
             Enviada em 15 de Março de 2025 às 14:32
         </p>

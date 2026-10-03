@@ -11,7 +11,7 @@ const router = createRouter({
       component: DashboardView,
     },
     {
-      path: '/analysis',
+      path: '/analysis/:id',
       name: 'analysis',
       component: AnalysisView,
     }
