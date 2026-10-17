@@ -1,6 +1,11 @@
 <script setup>
-import { RouterLink } from "vue-router";
-import { donationsList } from "../composables/donationList";
+const donations = [
+    { id: '000012', status: 'Incorporado', statusParam: 'incorporation' },
+    { id: '000011', status: 'Em Análise', statusParam: 'analysis' },
+    { id: '000010', status: 'Analisado', statusParam: 'analysis' },
+    { id: '000009', status: 'Não Incorporado', statusParam: 'rejected' },
+    { id: '000008', status: 'Encaminhado', statusParam: 'forwarded' }
+]
 </script>
 
 
@@ -20,14 +25,16 @@ import { donationsList } from "../composables/donationList";
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="donation in donationsList" :key="donation.id">
+                    <tr v-for="donation in donations" :key="donation.id">
                         <th scope="row">{{ donation.id }}</th>
                         <th scope="row">{{ donation.status }}</th>
                         <td>
                             <RouterLink 
                                 :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
                                 class="action-link"
-                            >Ver Detalhes</RouterLink>
+                            >
+                                Ver Detalhes
+                            </RouterLink>
                         </td>
                     </tr>
                 </tbody>

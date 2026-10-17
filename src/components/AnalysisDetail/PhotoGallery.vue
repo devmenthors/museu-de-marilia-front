@@ -1,10 +1,25 @@
 <script setup>
-defineProps({
-    photos: {
-        type: Array,
-        default: () => [1, 2, 3, 4, 5]
+/*
+const itemInfo = ref([]);
+async function getItemInfo(id) {
+    try {
+        const response = await getInformationItem(id)
+        iteminfo.value = response.data
+        notify.success(menssage)
+    } catch (err) {
+        console.error(err.response?.data)
     }
-})
+}
+*/
+
+// Trazido de composables/useAnalysisData para teste
+const photos = [
+    { id: 1, url: "" },
+    { id: 2, url: "" },
+    { id: 3, url: "" },
+    { id: 4, url: "" },
+    { id: 5, url: "" }
+]
 </script>
 
 <template>
@@ -12,9 +27,9 @@ defineProps({
         <div class="container-image">
             <h2>Fotos do Item</h2>
             <div class="row gap-2 justify-content-between">
-                <div v-for="photo in photos" :key="photo" class="image border">
+                <div v-for="photo in photos" :key="photo.id" class="image border">
                     <i class="ri-file-image-line"></i>
-                    <p>Foto #{{ photo }}</p>
+                    <p>Foto #{{ photo.id }}</p>
                 </div>
             </div>
         </div>

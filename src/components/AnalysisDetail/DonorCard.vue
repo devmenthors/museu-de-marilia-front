@@ -1,10 +1,25 @@
 <script setup>
-defineProps({
-    donor: {
-        type: Object,
-        required: true
+/*
+const itemInfo = ref([]);
+async function getItemInfo(id) {
+    try {
+        const response = await getInformationItem(id)
+        iteminfo.value = response.data
+        notify.success(menssage)
+    } catch (err) {
+        console.error(err.response?.data)
     }
-})
+}
+*/
+
+// Trazido de composables/useAnalysisData para teste
+const dadosDoador = [
+    { label: "Nome", value: "Isabela Oliveira" },
+    { label: "CPF", value: "123.456.789-00" },
+    { label: "Telefone", value: "(14) 99000-1234" },
+    { label: "E-mail", value: "isabela@email.com" },
+    { label: "Endereço", value: "Rua das Flores, 123 - Centro - Marília/SP" }
+]
 </script>
 
 <template>
@@ -13,25 +28,12 @@ defineProps({
             <h2>Dados do Doador</h2>
             <div class="card p-3 rounded-0">
                 <ul class="navbar-nav">
-                    <li class="mb-2">
-                        <strong>Nome:</strong>
-                        <span>{{ donor.name }}</span>
-                    </li>
-                    <li class="mb-2">
-                        <strong>CPF:</strong>
-                        <span>{{ donor.cpf }}</span>
-                    </li>
-                    <li class="mb-2">
-                        <strong>Telefone:</strong>
-                        <span>{{ donor.phone }}</span>
-                    </li>
-                    <li class="mb-2">
-                        <strong>E-mail:</strong>
-                        <span>{{ donor.email }}</span>
-                    </li>
-                    <li>
-                        <strong>Endereço:</strong>
-                        <span>{{ donor.address }}</span>
+                    <li
+                        v-for="dado in dadosDoador"
+                        :key="dado.label"
+                        class="mb-2"
+                    >
+                        <strong>{{ dado.label }}:</strong> <span>{{ dado.value }}</span>
                     </li>
                 </ul>
             </div>

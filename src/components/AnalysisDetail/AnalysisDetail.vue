@@ -13,40 +13,29 @@ const route = useRoute()
 const router = useRouter()
 
 const {
-    currentStatus,
     loading,
     fetchAnalysisData,
-    getScreenData,
-    donorData,
-    itemData,
-    timeline
+    getScreenData
 } = useAnalysisData()
 
-onMounted(async () => {
-    const status = route.query.status || "analysis"
-    const donationId = route.params.id || "000012"
+const statusMap = {
+    "Incorporar": "incorporation",
+    "Não Incorporar": "rejected",
+    "Encaminhar": "forwarded"
+}
 
-    await fetchAnalysisData(donationId, status)
+onMounted(() => {
+    fetchAnalysisData(route.query.status || "analysis")
 })
 
 const handleAction = async (actionName) => {
-    console.log("Ação clicada: ", actionName)
-
-    if (actionName.includes("Cancelar")) {
+    if (actionName === "Cancelar") {
         router.back()
         return
     }
 
-    const statusMap = {
-        "Incorporar": "incorporation",
-        "Não Incorporar": "rejected",
-        "Encaminhar": "forwarded",
-        "Analisar": "analysis"
-    }
-
     if (statusMap[actionName]) {
-        const newStatus = statusMap[actionName]
-        await fetchAnalysisData(route.params.id, newStatus)
+        await fetchAnalysisData(statusMap[actionName])
     }
 }
 </script>
@@ -59,15 +48,15 @@ const handleAction = async (actionName) => {
         </p>
         <section class="row mb-5">
             <div class="col-md-7">
-                <DonorCard :donor="donorData" />
-                <ItemInfo :item="itemData" />
+                <DonorCard />
+                <ItemInfo />
             </div>
             <div class="col-md-5 d-flex flex-column align-items-end">
-                <PhotoGallery :photos="[1, 2, 3, 4, 5]" />
+                <PhotoGallery />
             </div>
         </section>
 
-        <Timeline :event="timeline" />
+        <Timeline />
         <ActionButtons :buttons="getScreenData.buttons" @action="handleAction" />
     </div>
 
