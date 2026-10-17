@@ -1,60 +1,33 @@
 <template>
-    <div class="containerBorda">
-        <div class="d-flex justify-content-between   espacamento">
-            <div>
-                <img class="imgLogoPrincipal"
-                    src="https://g1.globo.com/ciencia/noticia/2025/06/15/a-nova-especie-de-dinossauro-que-reescreve-historia-da-evolucao-do-tiranossauro-rex.ghtml"
-                    alt="LogoPrincipal">
-            </div>
-            <div>
-                <p>Painel do Curador > Solicitação #000012 > Aprovar</p>
-                
-                </div>
-            <div class="curador d-flex">
-                <p>Curador: {{ nomecurador }}</p>
-                <i class="ri-notification-3-line"></i>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg shadow-sm text-dark">
+    <div class="container">
+      <RouterLink class="navbar-brand d-flex align-items-center fw-bold" to="/">
+        <p class="m-0">[LOGO]</p>
+        <p class="mb-0 mx-4 fs-5">Painel do Curador > Solicitação #000012</p>
+      </RouterLink>
 
+      <div class="navbar-nav ms-auto gap-3">
+        <RouterLink to="/" class="nav-link px-0">
+          Curador: Dev. João Pedro
+          <i class="ri-notification-line me-1 p-1"></i>
+        </RouterLink>
+      </div>
     </div>
+  </nav>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            nomecurador: 'Maria fernanda',
-        }
-    },
-    methods: {
-        // getNameCurador() {
-        //     this.nomecurador = Nome-da-service.getNameCurador();
-        // }
-    }
-}
-</script>
-
 <style scoped>
-@import url('https://googleapis.com');
-img {
-    width: 100px;
-    height: 100px;
-    margin-left: 58px;
-    margin-top: 8px;
+nav {
+  height: 56px;
 }
 
-.curador {
-    color: black;
-    font-size: 12px;
-    gap: 10px;
-    margin-top: 8px;
+.navbar-brand .fs-5,
+.navbar-nav {
+  font-size: 14px !important;
 }
 
-.espacamento {
-    margin: 0 60px 0 0;
-}
-
-.containerBorda {
-    border-bottom: 1px solid black;
+.ri-notification-line {
+  background-color: #FFFFE3;
+  border-radius: 50%;
 }
 </style>

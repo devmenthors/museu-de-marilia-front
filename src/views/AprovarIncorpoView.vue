@@ -1,4 +1,10 @@
+<script setup>
+import AppHeader from '@/views/AppHeader.vue';
+import FormsAprovarView from '@/components/formulários/FormsAprovarView.vue';
+</script>
+
 <template>
+  <AppHeader></AppHeader>
   <main class="conteudo-container container-fluid">
     <div class="row">
       <div class="col-12 conteudo">
@@ -21,11 +27,6 @@
   </main>
 
 </template>
-
-<script setup>
-import FormsAprovarView from '@/components/formulários/FormsAprovarView.vue';
-
-</script>
 
 <style scoped>
 .conteudo-container {

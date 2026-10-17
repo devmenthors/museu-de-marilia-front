@@ -1,5 +1,10 @@
-<template>
+<script setup>
+import AppHeader from '@/views/AppHeader.vue';
+import FormsEncaminhar from '@/components/formulários/FormsEncaminhar.vue';
+</script>
 
+<template>
+  <AppHeader></AppHeader>
   <main class="conteudo-container container-fluid">
     <div class="row">
       <div class="col-12 conteudo">
@@ -20,14 +25,8 @@
     </div>
 
   </main>
-  
+
 </template>
-
-<script setup>
-import FormsEncaminhar from '@/components/formulários/FormsEncaminhar.vue';
-import AppHeader from './AppHeader.vue';
-
-</script>
 
 <style scoped>
 .conteudo-container {

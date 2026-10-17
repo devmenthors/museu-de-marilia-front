@@ -19,22 +19,25 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path:'/Justificar',
-      name:'JustificarIncorpo',
-      component:()=>import('../views/JustificarIncorpoView.vue')
+      path: '/Justificar',
+      name: 'JustificarIncorpo',
+      component: () => import('../views/JustificarIncorpoView.vue')
     },
-     {
-      path:'/Aprovar',
-      name:'AprovarIncorpo',
-      component:()=>import('../views/AprovarIncorpoView.vue')
+    {
+      path: '/Aprovar',
+      name: 'AprovarIncorpo',
+      component: () => import('../views/AprovarIncorpoView.vue')
     },
-     {
-      path:'/Encaminhar',
-      name:'AprovarIncorpo',
-      component:()=>import('../views/EncaminharIncorpoView.vue')
+    {
+      path: '/Encaminhar',
+      name: 'EncaminharIncorpo', // Corrigido aqui para não duplicar o nome
+      component: () => import('../views/EncaminharIncorpoView.vue')
     },
-
-
+    {
+      path: '/Header',
+      name: 'AppHeader',
+      component: () => import('../views/AppHeader.vue')
+    }
   ],
 })
 

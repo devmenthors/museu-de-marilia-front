@@ -1,10 +1,17 @@
+<script setup>
+import AppHeader from '@/views/AppHeader.vue';
+import FormsJustificarView from '@/components/formulários/FormsJustificarView.vue';
+</script>
+
 <template>
+  <AppHeader></AppHeader>
   <main class="conteudo-container container-fluid">
     <div class="row">
       <div class="col-12 conteudo">
 
         <h2 class="titulo-laranja">Justificativa de Não Incorporação</h2>
-        <h3 class="subtitulo-cinza">Forneça o parecer oficial justificando o motivo para o item não ser incorporado ao acervo do museu</h3>
+        <h3 class="subtitulo-cinza">Forneça o parecer oficial justificando o motivo para o item não ser incorporado ao
+          acervo do museu</h3>
 
         <div class="caixa-resumo-marrom">
           <p class="tag-resumo">RESUMO DA PROPOSTA</p>
@@ -17,11 +24,6 @@
     </div>
   </main>
 </template>
-
-<script setup>
-import FormsJustificarView from '@/components/formulários/FormsJustificarView.vue';
-
-</script>
 
 <style scoped>
 .conteudo-container {
@@ -86,7 +88,4 @@ import FormsJustificarView from '@/components/formulários/FormsJustificarView.v
   font-size: 14px;
   color: #5D372E;
 }
-
-
-
 </style>
