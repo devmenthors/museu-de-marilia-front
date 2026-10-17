@@ -1,11 +1,5 @@
 <script setup>
-const donations = [
-    { id: '000012', status: 'Incorporado', statusParam: 'incorporation' },
-    { id: '000011', status: 'Em Análise', statusParam: 'analysis' },
-    { id: '000010', status: 'Analisado', statusParam: 'analysis' },
-    { id: '000009', status: 'Não Incorporado', statusParam: 'rejected' },
-    { id: '000008', status: 'Encaminhado', statusParam: 'forwarded' }
-]
+import Table from "../components/Dashboard/Table.vue";
 </script>
 
 
@@ -16,41 +10,7 @@ const donations = [
             <p>Tela criada para testar os botões de ações que levam para as telas de análises.</p>
         </div>
         <div class="container-sm">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="donation in donations" :key="donation.id">
-                        <th scope="row">{{ donation.id }}</th>
-                        <th scope="row">{{ donation.status }}</th>
-                        <td>
-                            <RouterLink 
-                                :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
-                                class="action-link"
-                            >
-                                Ver Detalhes
-                            </RouterLink>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <Table />
         </div>
     </div>
 </template>
-
-<style scoped>
-.container-sm {
-    max-width: 750px;
-}
-.action-link {
-    color: var(--bs-secondary);
-    text-decoration: underline;
-    cursor: pointer;
-    font-weight: 550;
-}
-</style>
