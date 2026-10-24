@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-// import HomeView from '@/views/AppHeader.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,9 +12,6 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
     {
@@ -30,13 +26,34 @@ const router = createRouter({
     },
     {
       path: '/Encaminhar',
-      name: 'EncaminharIncorpo', // Corrigido aqui para não duplicar o nome
+      name: 'EncaminharIncorpo',
       component: () => import('../views/EncaminharIncorpoView.vue')
     },
     {
       path: '/Header',
       name: 'AppHeader',
       component: () => import('../views/AppHeader.vue')
+    },
+    // ================= FLUXO DE DOAÇÃO DE ITENS =================
+    {
+      path: '/doacao',
+      name: 'DadosPessoais',
+      component: () => import('../views/DadosPessoais.vue') // Tela 1
+    },
+    {
+      path: '/InformacoesItem',
+      name: 'InformacoesItem',
+      component: () => import('../views/InformacoesItemView.vue') // Tela 2
+    },
+    {
+      path: '/FotosItem',
+      name: 'FotosItem',
+      component: () => import('../views/FotosItemView.vue') // Tela 3
+    },
+    {
+      path: '/Sucesso',
+      name: 'Sucesso',
+      component: () => import('../views/SucessoView.vue') // Tela 4
     }
   ],
 })

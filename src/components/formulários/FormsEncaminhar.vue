@@ -42,13 +42,13 @@
   </form>
 </template>
 <style scoped>
-/* ESTILOS EXCLUSIVOS DO FORMULÁRIO DE ENCAMINHAMENTO */
 .formulario-registro {
   width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+
 }
 
 .grupo-campo {
@@ -62,6 +62,7 @@
   font-weight: bold;
   color: #B53C02;
   letter-spacing: 0.5px;
+  
 }
 
 .grupo-campo input[type="text"],
@@ -86,7 +87,7 @@
   resize: vertical;
 }
 
-/* Seleção de Prioridade (Botões de Rádio) */
+
 .grupo-radio {
   display: flex;
   align-items: center;

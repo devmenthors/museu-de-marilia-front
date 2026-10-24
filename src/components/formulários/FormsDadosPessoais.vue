@@ -1,41 +1,56 @@
 <template>
-  <form class="formulario-registro">
+  <form class="formulario-registro" @submit.prevent="proximo">
 
     <div class="grupo-campo">
-      <label class="label-laranja">Nome Completo</label>
-      <input type="text" class="form-control" placeholder="Digite seu nome ">
+      <label class="label-laranja">NOME COMPLETO</label>
+      <input type="text" class="form-control" v-model="dados.nomeCompleto" placeholder="Digite seu nome completo" required>
     </div>
-
 
     <div class="grupo-campo">
       <label class="label-laranja">CPF</label>
-      <input type="text" class="form-control" placeholder="Ex: 123.456.789-0">    </div>
-
-<div class="grupo-campo">
-      <label class="label-laranja">E-mail</label>
-      <input type="email" class="form-control" placeholder="Ex: exemplo@dominio.com">
-    </div>
-
-
-    <div class="grupo-campo">
-      <label class="label-laranja">Telefone</label>
-      <input type="text" class="form-control" placeholder="Ex: (11) 99999-9999">
+      <input type="text" class="form-control" v-model="dados.cpf" placeholder="000.000.000-00" required>
     </div>
 
     <div class="grupo-campo">
-      <label class="label-laranja">Endereço</label>
-      <textarea class="form-control"
-        placeholder="Ex: Rua Exemplo, 123 - São Paulo/SP"></textarea>
+      <label class="label-laranja">E-MAIL</label>
+      <input type="text" class="form-control" v-model="dados.email" placeholder="nome@exemplo.com" required>
     </div>
 
+    <div class="grupo-campo">
+      <label class="label-laranja">TELEFONE</label>
+      <input type="text" class="form-control" v-model="dados.telefone" placeholder="(00) 00000-0000" required>
+    </div>
+
+    <div class="grupo-campo">
+      <label class="label-laranja">ENDEREÇO</label>
+      <input type="text" class="form-control" v-model="dados.endereco" placeholder="Digite seu endereço completo" required>
+    </div>
 
     <div class="grupo-botoes">
-      <button type="button" class="btn btn-cancelar-laranja">VOLTAR</button>
-      <button type="button" class="btn btn-confirmar-laranja">PRÓXIMO</button>
+      <button type="button" class="btn btn-cancelar-laranja" @click="voltar">VOLTAR</button>
+      <button type="submit" class="btn btn-confirmar-laranja">PRÓXIMO</button>
     </div>
 
   </form>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const emit = defineEmits(['proximo', 'voltar'])
+
+const dados = ref({
+  nomeCompleto: '',
+  cpf: '',
+  email: '',
+  telefone: '',
+  endereco: ''
+})
+
+const proximo = () => emit('proximo', dados.value)
+const voltar = () => emit('voltar')
+</script>
+
 <style scoped>
 .formulario-registro {
   width: 100%;
@@ -43,7 +58,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background-color:#943101;
 }
 
 .grupo-campo {
@@ -59,9 +73,7 @@
   letter-spacing: 0.5px;
 }
 
-.grupo-campo input,
-.grupo-campo select,
-.grupo-campo textarea {
+.grupo-campo input[type="text"] {
   width: 100%;
   padding: 12px;
   border: 1px solid #B53C02;
@@ -69,37 +81,6 @@
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   background-color: #ffffff;
-}
-
-.grupo-campo input::placeholder,
-.grupo-campo textarea::placeholder {
-  color: #cccccc;
-}
-
-.grupo-campo textarea {
-  height: 120px;
-  resize: vertical;
-}
-
-.grupo-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.form-check-input {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  margin: 0;
-  border: 1px solid #B53C02;
-}
-
-.form-check-label {
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
 }
 
 .grupo-botoes {
