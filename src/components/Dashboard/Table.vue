@@ -18,23 +18,35 @@ const donations = [
                     <th scope="col">Data de Envio</th>
                     <th scope="col">Tipo de Acervo</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" class="text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="donation in donations" :key="donation.id">
-                    <th scope="row">#{{ donation.id }}</th>
+                    <th scope="row" class="id-column">#{{ donation.id }}</th>
                     <th scope="row">{{ donation.donor }}</th>
                     <th scope="row">{{ donation.date }}</th>
                     <th scope="row">{{ donation.type }}</th>
-                    <th scope="row">{{ donation.status }}</th>
+                    <th scope="row" class="status-column">
+                       <span>{{ donation.status }} </span>
+                    </th>
                     <td>
-                        <RouterLink 
+                        <div class="actions-column">
+                            <RouterLink 
                             :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
                             class="action-link"
-                        >
-                            Ver Detalhes
-                        </RouterLink>
+                            >
+                                Ver Detalhes
+                            </RouterLink>
+
+                            <RouterLink
+                                v-if="donation.status === 'Em Análise'"
+                                :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
+                                class="btn btn-primary btn-sm"
+                            >
+                                Analisar
+                            </RouterLink>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -43,6 +55,39 @@ const donations = [
 </template>
 
 <style scoped>
+
+table th{
+    color: var(--bs-secondary);
+    font-size: 14px;
+}
+
+table tr {
+    border-bottom: 1px solid var(--bs-secondary);
+}
+
+thead th {
+    text-transform: uppercase;
+    background-color: #F2F2F7;
+    color: var(--bs-secondary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.id-column {
+    color: var(--bs-secondary);
+    font-weight: 500;
+}
+
+.status-column span {
+    border: 1px solid var(--bs-secondary);
+    padding: 3px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    max-width: 125px;
+}
+
 .action-link {
     color: var(--bs-secondary);
     text-decoration: underline;
@@ -50,13 +95,11 @@ const donations = [
     font-weight: 550;
 }
 
-thead {
-    background-color: red !important;
+.actions-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
 }
 
-thead th {
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--bs-secondary);
-}
 </style>
