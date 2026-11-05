@@ -6,11 +6,13 @@ const donations = [
     { id: '000009', donor: 'Juliana Andrade', date: '08/03/2025', type: 'Coleção', status: 'Não Incorporada', statusParam: 'rejected' },
     { id: '000008', donor: 'Fernando Costa Prado', date: '05/03/2025', type: 'Item Único', status: 'Encaminhado', statusParam: 'forwarded' }
 ]
+
+import NavigationTable from './NavigationTable.vue';
 </script>
 
 <template>
     <div>
-        <div class="container-sm p-0">
+        <div class="container-sm p-0 mb-5">
             <table class="table">
                 <thead>
                     <tr>
@@ -48,14 +50,12 @@ const donations = [
                     </tr>
                 </tbody>
             </table>
+            <NavigationTable />
         </div>
     </div>
 </template>
 
 <style scoped>
-.container-sm {
-    min-height: 55vh;
-}
 
 table th {
     color: var(--bs-secondary);
