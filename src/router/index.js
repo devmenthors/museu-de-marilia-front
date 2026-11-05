@@ -8,6 +8,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'login',
+      component: LoginView,
+    },
+    {
+      path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
     },
@@ -15,11 +20,6 @@ const router = createRouter({
       path: '/analysis/:id',
       name: 'analysis',
       component: AnalysisView,
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: LoginView,
     }
   ],
 })
