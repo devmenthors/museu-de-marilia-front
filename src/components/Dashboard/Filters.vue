@@ -35,23 +35,4 @@
     padding: 12px;
     margin-bottom: 24px;
 }
-
-.form-control,
-.form-select {
-    border: 1px solid var(--bs-secondary);
-    border-radius: 0;
-    font-size: 13px;
-    height: 38px;
-    box-shadow: none;
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: var(--bs-primary);
-    box-shadow: none;
-}
-
-.form-select:hover {
-    cursor: pointer;
-}
 </style>

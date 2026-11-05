@@ -5,10 +5,10 @@
   --bs-font-family-sans-serif: 'Inter', sans-serif;
   --bs-body-font-family: 'Inter', sans-serif;
 
-  --bs-primary: #B53C02 !important;       
-  --bs-secondary: #5D372E !important;    
-  --bs-body-bg: #FFFFE3;      
-  --bs-body-color: #000000;    
+  --bs-primary: #B53C02 !important;
+  --bs-secondary: #5D372E !important;
+  --bs-body-bg: #FFFFE3;
+  --bs-body-color: #000000;
 
   --bs-primary-rgb: 181, 60, 2;
   --bs-secondary-rgb: 93, 55, 46;
@@ -28,8 +28,8 @@
 .btn-secondary {
   --bs-btn-bg: #fff !important;
   --bs-btn-border-color: var(--bs-primary) !important;
-  --bs-body-bg: #ececdb !important;      
-  --bs-btn-hover-bg: var(--bs-body-bg) !important; 
+  --bs-body-bg: #ececdb !important;
+  --bs-btn-hover-bg: var(--bs-body-bg) !important;
   --bs-btn-hover-border-color: var(--bs-secondary) !important;
   --bs-btn-active-bg: #ececdb !important;
   --bs-btn-active-border-color: #ececdbbe !important;
@@ -37,7 +37,9 @@
   color: var(--bs-primary) !important;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: var(--bs-primary) !important;
 }
 
@@ -55,10 +57,32 @@ h3 {
   text-transform: uppercase;
 }
 
-p, li, h2 {
+p,
+li,
+h2 {
   font-size: 14px !important;
 }
 
-p, li {
+p,
+li {
   color: gray;
+}
+
+.form-control,
+.form-select {
+  border: 1px solid var(--bs-secondary) !important;
+  border-radius: 0 !important;
+  font-size: 13px !important;
+  height: 38px !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bs-primary) !important;
+  box-shadow: none !important;
+}
+
+.form-select:hover {
+  cursor: pointer !important;
 }

@@ -1,5 +1,5 @@
 <template>
-  <footer class="container-fluid d-flex justify-content-between align-items-center border-top py-3">
+  <footer class="container d-flex justify-content-between align-items-center border-top py-3">
     <div class="d-flex gap-4">
       <p class="m-0">[LOGO]</p>
       <p class="m-0">Museu de Paleontologia de Marília</p>
