@@ -1,16 +1,22 @@
 <script setup>
-    import { computed } from "vue";
-    import { useRoute } from "vue-router";
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 
-    const route = useRoute();
+const route = useRoute();
 
-    const showDonationInfo = computed(() => {
-        return route.name === "analysis"
-    })
+const showDonationInfo = computed(() => {
+    return route.name === "analysis"
+})
 
-    const donationId = computed(() => {
-        return route.params.id || "000012"
-    })
+const donationId = computed(() => {
+    return route.params.id || "000012"
+})
+
+const curador = ref({
+    nome: "Maria Fernanda",
+    cargo: "Curador"
+});
+
 </script>
 
 <template>
@@ -28,7 +34,7 @@
 
             <div class="navbar-nav ms-auto gap-3">
                 <RouterLink to="/" class="nav-link px-0">
-                    Curador: Dev. João Pedro
+                    {{ curador.cargo }}: {{ curador.nome }}
                     <i class="ri-notification-line me-1 p-1"></i>
                 </RouterLink>
             </div>
@@ -37,18 +43,17 @@
 </template>
 
 <style scoped>
+nav {
+    height: 56px;
+}
 
-    nav {
-        height: 56px;
-    }
+.navbar-brand .fs-5,
+.navbar-nav {
+    font-size: 14px !important;
+}
 
-    .navbar-brand .fs-5,
-    .navbar-nav {
-        font-size: 14px !important;
-    }
-
-    .ri-notification-line {
-        background-color: #FFFFE3;
-        border-radius: 50%;
-    }
+.ri-notification-line {
+    background-color: #FFFFE3;
+    border-radius: 50%;
+}
 </style>
