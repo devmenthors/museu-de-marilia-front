@@ -21,7 +21,7 @@ import NavigationTable from './NavigationTable.vue';
                         <th scope="col">Data de Envio</th>
                         <th scope="col">Tipo de Acervo</th>
                         <th scope="col">Status</th>
-                        <th scope="col" class="text-center">Ações</th>
+                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,7 +99,6 @@ thead th {
 .actions-column {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 24px;
 }
 </style>
