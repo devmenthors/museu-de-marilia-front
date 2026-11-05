@@ -10,53 +10,54 @@ const donations = [
 
 <template>
     <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Protocolo</th>
-                    <th scope="col">Doador</th>
-                    <th scope="col">Data de Envio</th>
-                    <th scope="col">Tipo de Acervo</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="donation in donations" :key="donation.id">
-                    <th scope="row" class="id-column">#{{ donation.id }}</th>
-                    <th scope="row">{{ donation.donor }}</th>
-                    <th scope="row">{{ donation.date }}</th>
-                    <th scope="row">{{ donation.type }}</th>
-                    <th scope="row" class="status-column">
-                       <span>{{ donation.status }} </span>
-                    </th>
-                    <td>
-                        <div class="actions-column">
-                            <RouterLink 
-                            :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
-                            class="action-link"
-                            >
-                                Ver Detalhes
-                            </RouterLink>
+        <div class="container-sm p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Protocolo</th>
+                        <th scope="col">Doador</th>
+                        <th scope="col">Data de Envio</th>
+                        <th scope="col">Tipo de Acervo</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="donation in donations" :key="donation.id">
+                        <th scope="row" class="id-column">#{{ donation.id }}</th>
+                        <th scope="row">{{ donation.donor }}</th>
+                        <th scope="row">{{ donation.date }}</th>
+                        <th scope="row">{{ donation.type }}</th>
+                        <th scope="row" class="status-column">
+                            <span>{{ donation.status }} </span>
+                        </th>
+                        <td>
+                            <div class="actions-column">
+                                <RouterLink :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
+                                    class="action-link">
+                                    Ver Detalhes
+                                </RouterLink>
 
-                            <RouterLink
-                                v-if="donation.status === 'Em Análise'"
-                                :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
-                                class="btn btn-primary btn-sm"
-                            >
-                                Analisar
-                            </RouterLink>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                <RouterLink v-if="donation.status === 'Em Análise'"
+                                    :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
+                                    class="btn btn-primary btn-sm">
+                                    Analisar
+                                </RouterLink>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.container-sm {
+    min-height: 55vh;
+}
 
-table th{
+table th {
     color: var(--bs-secondary);
     font-size: 14px;
 }
@@ -101,5 +102,4 @@ thead th {
     justify-content: center;
     gap: 24px;
 }
-
 </style>
