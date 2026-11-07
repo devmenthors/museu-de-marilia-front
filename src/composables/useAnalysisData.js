@@ -1,21 +1,37 @@
 import { ref, computed } from "vue"
 
-const mockApiData = {
+const ButtonsInTelas = {
     analysis: {
         title: "Análise da Doação",
-        buttons: ["Cancelar Análise", "Encaminhar", "Não Incorporar", "Incorporar"]
+        buttons: ["Cancelar Análise", "Encaminhar", "Não Incorporar", "Incorporar"],
+        primaryButton: "Incorporar"
+    },
+    analyzed: {
+        title: "Detaalhes da Análise",
+        buttons: ["Voltar", "Confirmar Análise"],
+        primaryButton: "Confirmar Análise"
+    },
+    viewAnalysis: {
+        title: "Detalhes da Doação",
+        buttons: ["Voltar"],
+        primaryButton: "Voltar"
     },
     incorporation: {
         title: "Detalhes da Incorporação",
-        buttons: ["Cancelar", "Incorporar"]
+        buttons: ["Cancelar", "Não Incorporar"],
+        primaryButton: "Não Incorporar"
+
     },
     rejected: {
         title: "Detalhes da Não Incorporação",
-        buttons: ["Cancelar", "Incorporar", "Encaminhar"]
+        buttons: ["Cancelar", "Incorporar", "Encaminhar"],
+        primaryButton: "Encaminhar"
+
     },
     forwarded: {
         title: "Detalhes do Encaminhamento",
-        buttons: ["Cancelar", "Confirmar Encaminhamento"]
+        buttons: ["Cancelar", "Fazer Devolução", "Confirmar Encaminhamento"],
+        primaryButton: "Confirmar Encaminhamento"
     }
 }
 
@@ -34,7 +50,7 @@ export function useAnalysisData(status = "analysis") {
     }
 
     const getScreenData = computed(() => {
-        return mockApiData[currentStatus.value] || mockApiData.analysis
+        return ButtonsInTelas[currentStatus.value] || ButtonsInTelas.analysis
     })
 
     return {

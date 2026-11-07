@@ -2,7 +2,7 @@
 const donations = [
     { id: '000012', donor: 'Maria Oliveira', date: '15/03/2025', type: 'Item Único', status: 'Incorporado', statusParam: 'incorporation' },
     { id: '000011', donor: 'Carlos Eduardo Santos', date: '14/03/2025', type: 'Coleção', status: 'Em Análise', statusParam: 'analysis' },
-    { id: '000010', donor: 'Roberto de Souza', date: '10/03/2025', type: 'Item Único', status: 'Analisado', statusParam: 'analysis' },
+    { id: '000010', donor: 'Roberto de Souza', date: '10/03/2025', type: 'Item Único', status: 'Analisado', statusParam: 'analyzed' },
     { id: '000009', donor: 'Juliana Andrade', date: '08/03/2025', type: 'Coleção', status: 'Não Incorporada', statusParam: 'rejected' },
     { id: '000008', donor: 'Fernando Costa Prado', date: '05/03/2025', type: 'Item Único', status: 'Encaminhado', statusParam: 'forwarded' }
 ]
@@ -35,14 +35,15 @@ import NavigationTable from './NavigationTable.vue';
                         </th>
                         <td>
                             <div class="actions-column">
-                                <RouterLink :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
+                                <RouterLink
+                                    :to="`/analysis/${donation.id}?status=${donation.status === 'Em Análise' ? 'viewAnalysis' : donation.statusParam}`"
                                     class="action-link">
                                     Ver Detalhes
                                 </RouterLink>
 
-                                <RouterLink v-if="donation.status === 'Em Análise'"
-                                    :to="`/analysis/${donation.id}?status=${donation.statusParam}`"
-                                    class="btn btn-primary btn-sm">
+                                <RouterLink 
+                                    v-if="donation.status === 'Em Análise'"
+                                    :to="`/analysis/${donation.id}?status=analysis`" class="btn btn-primary btn-sm">
                                     Analisar
                                 </RouterLink>
                             </div>
@@ -56,7 +57,6 @@ import NavigationTable from './NavigationTable.vue';
 </template>
 
 <style scoped>
-
 table th {
     color: var(--bs-secondary);
     font-size: 14px;

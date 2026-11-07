@@ -29,7 +29,7 @@ onMounted(() => {
 })
 
 const handleAction = async (actionName) => {
-    if (actionName === "Cancelar") {
+    if (["Cancelar", "Cancelar Análise", "Voltar"].includes(actionName)) {
         router.back()
         return
     }
@@ -57,7 +57,11 @@ const handleAction = async (actionName) => {
         </section>
 
         <Timeline />
-        <ActionButtons :buttons="getScreenData.buttons" @action="handleAction" />
+        <ActionButtons 
+            :buttons="getScreenData.buttons" 
+            :primary-button="getScreenData.primaryButton"
+            @action="handleAction" 
+            />
     </div>
 
     <div v-else class="text-center py-5">

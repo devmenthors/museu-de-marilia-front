@@ -7,8 +7,7 @@ defineProps({
         required: true
     },
     primaryButton: {
-        type: String,
-        default: "Incorporar"
+        type: String
     }
 })
 
@@ -23,22 +22,24 @@ const handleAction = (buttonText) => {
 <template>
     <div>
         <section class="container d-flex justify-content-between">
-            <button
-                v-if="buttons.includes('Cancelar Análise') || buttons.includes('Cancelar')" 
-                type="button" 
-                class="btn btn-secondary px-4"
-                @click="handleAction('Cancelar')"
-                > 
-                {{ buttons.includes("Cancelar Análise") ? "Cancelar Análise" : "Cancelar" }}
+
+            <button v-if="buttons.some(b => ['Voltar', 'Cancelar', 'Cancelar Análise'].includes(b))" type="button"
+                class="btn btn-secondary px-4" @click="handleAction(
+                    buttons.includes('Voltar') ? 'Voltar' :
+                    buttons.includes('Cancelar Análise') ? 'Cancelar Análise' : 'Cancelar'
+                )"
+                >
+                    {{ 
+                        buttons.includes('Voltar') ? 'Voltar' : buttons.includes('Cancelar Análise') ? 'Cancelar Análise' : 'Cancelar' 
+                    }}
             </button>
             <div class="buttons d-flex gap-3">
                 <button 
-                    v-for="btn in buttons.filter(b => !b.includes('Cancelar'))"
-                    :key="btn"
-                    type="button" 
+                    v-for="btn in buttons.filter(b => !['Voltar', 'Cancelar', 'Cancelar Análise'].includes(b))"
+                    :key="btn" 
+                    type="button"
                     :class="['btn', 'px-4', btn === primaryButton ? 'btn-primary' : 'btn-secondary']"
-                    @click="handleAction(btn)"
-                    >
+                    @click="handleAction(btn)">
                     {{ btn }}
                 </button>
             </div>
