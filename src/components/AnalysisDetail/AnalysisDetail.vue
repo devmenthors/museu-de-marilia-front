@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue"
+import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 
 import { useAnalysisData } from "../../composables/useAnalysisData"
@@ -8,9 +8,11 @@ import ItemInfo from "./ItemInfo.vue"
 import PhotoGallery from "./PhotoGallery.vue"
 import Timeline from "./Timeline.vue"
 import ActionButtons from "./ActionButtons.vue"
+import Modal from "./Modal.vue"
 
 const route = useRoute()
 const router = useRouter()
+const showForwardModal = ref(false)
 
 const {
     loading,
@@ -34,9 +36,29 @@ const handleAction = async (actionName) => {
         return
     }
 
+    if (actionName === "Confirmar Encaminhamento") {
+        showForwardModal.value = true
+        return
+    }
+
     if (statusMap[actionName]) {
         await fetchAnalysisData(statusMap[actionName])
     }
+
+}
+
+async function handleIncorporation(){
+    showForwardModal.value = false
+    await fetchAnalysisData("incorporation")
+}
+
+async function handleReject(){
+    showForwardModal.value = false
+    await fetchAnalysisData("rejected")
+}
+
+function confirmForwarding() {
+    showForwardModal.value = false
 }
 </script>
 
@@ -57,11 +79,17 @@ const handleAction = async (actionName) => {
         </section>
 
         <Timeline />
-        <ActionButtons 
-            :buttons="getScreenData.buttons" 
-            :primary-button="getScreenData.primaryButton"
-            @action="handleAction" 
-            />
+        <ActionButtons :buttons="getScreenData.buttons" :primary-button="getScreenData.primaryButton"
+            @action="handleAction" />
+
+        <Modal 
+            :show="showForwardModal" title="Confirmar Encaminhamento"
+            message="Para onde deseja encaminhar esta doação?" 
+            confirm-text="Confirmar Encaminhamento"
+            @incorporate="handleIncorporation" 
+            @reject="handleReject" 
+            @cancel="showForwardModal = false" />
+
     </div>
 
     <div v-else class="text-center py-5">
