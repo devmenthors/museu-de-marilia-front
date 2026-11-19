@@ -181,3 +181,79 @@ Também serão aplicadas validações para verificar o tipo e o tamanho dos arqu
 O sistema permitirá que o Museu Paleontológico tenha mais controle sobre suas peças, doações, documentos e processos técnicos.
 
 Com a digitalização, o museu poderá reduzir o uso de papel, organizar melhor seu acervo, acompanhar cada etapa de uma doação e disponibilizar informações de maneira mais acessível e segura.
+
+---
+
+# Front-end (Vue 3 + Vite)
+
+Este projeto une as duas versões que existiam do front (`feature/davi-telas` e `main`) em um só.
+
+## Como rodar
+
+```sh
+npm install      # instala as dependências
+npm run dev      # servidor de desenvolvimento
+npm run build    # gera a versão de produção em /dist
+npm run lint     # verifica o código (oxlint + eslint)
+```
+
+Para entrar no sistema durante o desenvolvimento, use qualquer e-mail válido (ou CPF com 11 números) e uma senha com pelo menos 6 caracteres. O login ainda é simulado até a API existir.
+
+## Rotas
+
+| URL | Nome da rota | Tela | Precisa de login |
+|---|---|---|---|
+| `/` | `login` | Acesso ao Sistema | não |
+| `/dashboard` | `dashboard` | Painel de Controle | sim |
+| `/analysis/:id` | `analysis` | Análise / detalhes da doação | sim |
+| `/analysis/:id/aprovarIncorporacao` | `aprovarIncorporacao` | Aprovar Incorporação | sim |
+| `/analysis/:id/justificarIncorporacao` | `justificarIncorporacao` | Justificativa de Não Incorporação | sim |
+| `/analysis/:id/encaminharIncorporacao` | `encaminharIncorporacao` | Encaminhar Solicitação | sim |
+| `/doacao/dadosPessoais` | `doacaoDadosPessoais` | Doação – etapa 1 | sim |
+| `/doacao/informacoesItem` | `doacaoInformacoesItem` | Doação – etapa 2 | sim |
+| `/doacao/fotosItem` | `doacaoFotosItem` | Doação – etapa 3 | sim |
+| `/doacao/sucesso` | `doacaoSucesso` | Doação – etapa 4 | sim |
+
+Fluxo do curador: **Painel → Analisar → Incorporar / Não Incorporar / Encaminhar → formulário → volta para a análise com o novo status.**
+Fluxo de doação: **Painel → Formulário de Doação → etapas 1 a 4 → Painel.**
+
+## Estrutura de pastas
+
+```
+src/
+  Assets/Styles/      Main.css, Base.css, Formularios.css
+  Components/
+    AnalysisDetail/   peças da tela de análise
+    Dashboard/        peças do painel
+    Formularios/      formulários de doação e de decisão do curador
+    Layout/           AppNavbar e AppFooter (iguais em todas as telas)
+    Login/            LoginForm
+  Composables/        useAnalysisData, useDoacao
+  Router/             index.js (rotas + proteção de login)
+  Services/           autenticacao.js, solicitacoes.js (dados de teste)
+  Views/              uma View por rota
+```
+
+## Padrão de nomenclatura
+
+| O quê | Padrão | Exemplo |
+|---|---|---|
+| Pastas | `NessePadrao` | `Components/Formularios` |
+| Imagens e assets | `NessePadrao` | `Favicon.ico`, `Main.css` |
+| Componentes `.vue` | `NessePadrao`, sempre com 2+ palavras (regra do Vue) | `FormFotosItem.vue` |
+| Arquivos `.js` | `nessePadrao` | `useDoacao.js`, `autenticacao.js` |
+| Variáveis, funções, props, eventos | `nessePadrao` | `salvarDadosPessoais`, `primaryButton` |
+| Nomes e caminhos de rota | `nessePadrao` | `aprovarIncorporacao` |
+| `id` de elementos HTML | `nessePadrao` | `id="nomeCompleto"` |
+| Classes CSS | `kebab-case` (mantidas como estavam) | `.formulario-registro` |
+
+Exceção: o `name` do `package.json` precisa ser minúsculo (regra do npm).
+
+## Segurança
+
+- O controle de login no front só organiza a navegação. **A API precisa validar o JWT em toda rota.**
+- Quando houver API: JWT em cookie `httpOnly` + `Secure` + `SameSite`, nunca em `localStorage`.
+- Dados pessoais da doação ficam só na memória da aba (não são gravados no navegador).
+- Upload: apenas JPG/PNG/WEBP de até 5 MB (a API também deve validar tipo e tamanho).
+- O parâmetro `?redirect=` do login só aceita caminhos internos (evita "open redirect").
+- Ao publicar, configure no servidor os cabeçalhos `Content-Security-Policy`, `X-Content-Type-Options: nosniff`, `Referrer-Policy` e HTTPS obrigatório.

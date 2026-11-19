@@ -1,0 +1,39 @@
+<template>
+    <div>
+        <div class="filters-container">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <!-- maxlength: impede textos gigantes quando a busca for enviada para a API -->
+                    <input type="text" name="search" id="search" class="form-control"
+                        placeholder="⌕ Buscar por protocolo ou doador" maxlength="100" aria-label="Buscar por protocolo ou doador">
+                </div>
+                <div class="col-12 col-md-3">
+                    <select name="status" id="status" class="form-select" aria-label="Filtrar por status">
+                        <option value="todos">Todos os status</option>
+                        <option value="analise">Em análise</option>
+                        <option value="aguardando">Aguardando documentação</option>
+                        <option value="aprovado">Aprovadas</option>
+                        <option value="naoIncorporado">Não incorporadas</option>
+                        <option value="encaminhado">Encaminhadas</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <select name="periodo" id="periodo" class="form-select" aria-label="Filtrar por período">
+                        <option value="7">Últimos 7 dias</option>
+                        <option value="30">Últimos 30 dias</option>
+                        <option value="90">Últimos 90 dias</option>
+                        <option value="todos">Todo o período</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.filters-container {
+    border: 1px solid var(--bs-secondary);
+    padding: 12px;
+    margin-bottom: 24px;
+}
+</style>
